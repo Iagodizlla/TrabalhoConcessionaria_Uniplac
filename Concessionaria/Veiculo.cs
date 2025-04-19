@@ -10,7 +10,7 @@ public class Veiculo
     public string Combustivel { get; set; } //Gasolina, Álcool, Flex, Elétrico
     public string Cambio { get; set; } //manual/automático
     public double CapacidadeTanque { get; set; } // em litros
-    public string TipoFreio { get; set; }
+    public string TipoFreio { get; set; } //Disco, Tambor, ABS
     public double Preco { get; set; }
     public string Placa { get; set; } //Placa do veículo
 
