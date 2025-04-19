@@ -128,7 +128,7 @@ public class Program
         Console.Write("Carroceria (Hatch/Sedan): ");
         string carroceria = Console.ReadLine()!;
         Automovel automovel = new Automovel(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio, capacidadeTanque, 
-            tipoFreio, preco, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, carroceria, placa);
+            tipoFreio, preco, placa, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, carroceria);
         return automovel;
     }
     public static void ListarAutomoveis()

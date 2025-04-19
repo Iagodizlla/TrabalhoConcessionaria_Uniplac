@@ -3,6 +3,7 @@
 //Arthur Barbosa
 namespace Concessionaria;
 
+// Abstração: Classe genérica para representar qualquer veículo
 public class Veiculo
 {
     public string Marca { get; set; }
@@ -17,4 +18,20 @@ public class Veiculo
     public double Preco { get; set; }
     public string Placa { get; set; } //Placa do veículo
 
+    // Construtor padrão
+    public Veiculo(string marca, string modelo, int anoFabricacao, string cor, int capacidadeOcupantes, string combustivel, string cambio,
+        double capacidadeTanque, string tipoFreio, double preco, string placa)
+    {
+        Marca = marca;
+        Modelo = modelo;
+        AnoFabricacao = anoFabricacao;
+        Cor = cor;
+        CapacidadeOcupantes = capacidadeOcupantes;
+        Combustivel = combustivel;
+        Cambio = cambio;
+        CapacidadeTanque = capacidadeTanque;
+        TipoFreio = tipoFreio;
+        Preco = preco;
+        Placa = placa;
+    }
 }
