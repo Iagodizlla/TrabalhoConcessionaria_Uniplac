@@ -2,22 +2,22 @@
 
 namespace Concessionaria;
 
-public class Program : Menu
+public class Program
 {
     public static List<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
     public static void Main(string[] args)
     {
         while (true)
         {
-            Cabecalho();
-            char opcao = MenuPrincipal();
+            Menu.Cabecalho();
+            char opcao = Menu.MenuPrincipal();
             bool sair = false;
             if (opcao == '3')
             {
                 while (sair == false)
                 {
-                    Cabecalho();
-                    char opcaoS = MenuMotocicleta();
+                    Menu.Cabecalho();
+                    char opcaoS = Menu.MenuMotocicleta();
                     switch (opcaoS)
                     {
                         case '1': CadastrarMotocicleta(); break;
