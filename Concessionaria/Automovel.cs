@@ -6,7 +6,7 @@ public class Automovel : QuatroRodas
 
     public Automovel(string marca, string modelo, int anoFabricacao, string cor, int capacidadeOcupantes, string combustivel, string cambio,
     double capacidadeTanque, string tipoFreio, double preco, int numeroPortas, bool arCondicionado, bool sistemaSom, bool airbags, bool estepe,
-    string carroceria)
+    string carroceria, string placa)
     {
         Carroceria = carroceria;
         //4Rodas
@@ -27,5 +27,6 @@ public class Automovel : QuatroRodas
         CapacidadeTanque = capacidadeTanque;
         TipoFreio = tipoFreio;
         Preco = preco;
+        Placa = placa;
     }
 }

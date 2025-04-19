@@ -1,4 +1,6 @@
-﻿namespace Concessionaria;
+﻿using System.Numerics;
+
+namespace Concessionaria;
 
 public class Caminhonete : QuatroRodas
 {
@@ -11,7 +13,7 @@ public class Caminhonete : QuatroRodas
 
     public Caminhonete(string marca, string modelo, int anoFabricacao, string cor, int capacidadeOcupantes, string combustivel, string cambio,
     double capacidadeTanque, string tipoFreio, double preco, int numeroPortas, bool arCondicionado, bool sistemaSom, bool airbags, bool estepe,  
-    int capacidadeCarga, string tracao, string cacamba, int potenciaMotor, bool engateReboque, bool suspensaoReforcada)
+    int capacidadeCarga, string tracao, string cacamba, int potenciaMotor, bool engateReboque, bool suspensaoReforcada, string placa)
     {
         CapacidadeCarga = capacidadeCarga;
         Tracao = tracao;
@@ -37,5 +39,6 @@ public class Caminhonete : QuatroRodas
         CapacidadeTanque = capacidadeTanque;
         TipoFreio = tipoFreio;
         Preco = preco;
+        Placa = placa;
     }
 }

@@ -12,5 +12,6 @@ public class Veiculo
     public double CapacidadeTanque { get; set; } // em litros
     public string TipoFreio { get; set; }
     public double Preco { get; set; }
+    public string Placa { get; set; } //Placa do veículo
 
 }

@@ -1,4 +1,6 @@
-﻿namespace Concessionaria;
+﻿using System.Numerics;
+
+namespace Concessionaria;
 
 public class Motocicleta : Veiculo
 {
@@ -7,7 +9,7 @@ public class Motocicleta : Veiculo
     public string Partida { get; set; } //Elétrica ou Pedal
 
     public Motocicleta(string marca, string modelo, int anoFabricacao, string cor, int capacidadeOcupantes, string combustivel, string cambio,
-    double capacidadeTanque, string tipoFreio, double preco, int cilindrada, string tipo, string partida)
+    double capacidadeTanque, string tipoFreio, double preco, int cilindrada, string tipo, string partida, string placa)
     {
         Cilindrada = cilindrada;
         Tipo = tipo;
@@ -23,5 +25,6 @@ public class Motocicleta : Veiculo
         CapacidadeTanque = capacidadeTanque;
         TipoFreio = tipoFreio;
         Preco = preco;
+        Placa = placa;
     }
 }
