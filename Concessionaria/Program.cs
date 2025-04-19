@@ -1,18 +1,21 @@
 ﻿//Iago Henrique Schlemper
 //Eduardo Da Silva Ramos
 //Arthur Barbosa
+using System.Threading.Channels;
+
 namespace Concessionaria;
 public class Program
 {
     public static List<Veiculo> Veiculos = new List<Veiculo>();
     public static void Main(string[] args)
     {
+        Revenda revenda = CadastrarRevenda();
         while (true)
         {
             Menu.Cabecalho();
             char opcao = Menu.MenuPrincipal();
             bool sair = false;
-            if(opcao == '1')
+            if (opcao == '1')
             {
                 while (sair == false)
                 {
@@ -29,7 +32,7 @@ public class Program
                     }
                 }
             }
-            else if(opcao == '2')
+            else if (opcao == '2')
             {
                 while (sair == false)
                 {
@@ -46,7 +49,7 @@ public class Program
                     }
                 }
             }
-            else if(opcao == '3')
+            else if (opcao == '3')
             {
                 while (sair == false)
                 {
@@ -63,11 +66,15 @@ public class Program
                     }
                 }
             }
-            else if(opcao == '4')
+            else if (opcao == '4')
             {
                 ListarVeiculos();
             }
-            else if(opcao == 'S')
+            else if (opcao == '5')
+            {
+                MostrarDadosRevenda(revenda);
+            }
+            else if (opcao == 'S')
             {
                 break;
             }
@@ -90,7 +97,7 @@ public class Program
     }
     public static Automovel ObterDadosAutomovel(bool editar, string placa)
     {
-        if(editar == false)
+        if (editar == false)
         {
             Console.Write("Placa: ");
             placa = Console.ReadLine()!.ToUpper();
@@ -127,7 +134,7 @@ public class Program
         bool estepe = bool.Parse(Console.ReadLine()!);
         Console.Write("Carroceria (Hatch/Sedan): ");
         string carroceria = Console.ReadLine()!;
-        Automovel automovel = new Automovel(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio, capacidadeTanque, 
+        Automovel automovel = new Automovel(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio, capacidadeTanque,
             tipoFreio, preco, placa, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, carroceria);
         return automovel;
     }
@@ -285,7 +292,7 @@ public class Program
         bool suspensaoReforcada = bool.Parse(Console.ReadLine()!);
 
         Caminhonete caminhonete = new Caminhonete(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio,
-            capacidadeTanque, tipoFreio, preco, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, capacidadeCarga, tracao, cacamba, 
+            capacidadeTanque, tipoFreio, preco, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, capacidadeCarga, tracao, cacamba,
             potenciaMotor, engateReboque, suspensaoReforcada, placa);
 
         return caminhonete;
@@ -419,7 +426,7 @@ public class Program
         Console.WriteLine("Digite a placa da motocicleta: ");
         string placa = Console.ReadLine()!;
         Veiculo veiculoAntigo = BuscarVeiculo(placa);
-        if(veiculoAntigo is Motocicleta)
+        if (veiculoAntigo is Motocicleta)
         {
             RemoverVeiculo(veiculoAntigo);
             Menu.Cabecalho();
@@ -549,20 +556,76 @@ public class Program
         Menu.Cabecalho();
         Console.WriteLine("Listar Veiculos");
         Console.WriteLine("------------------");
-        Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -20} | {3, -15} | {4, -10} | {5, -15}",
-            "Placa", "Marca", "Modelo", "Ano Fabricacao", "Preco", "Tipo"
-            );
 
         for (int i = 0; i < Veiculos.Count; i++)
         {
             if (Veiculos[i] == null) continue;
 
-            Console.WriteLine(
-            "{0, -10} | {1, -20} | {2, -20} | {3, -15} | {4, -10} | {5, -15}",
-                Veiculos[i].Placa, Veiculos[i].Marca, Veiculos[i].Modelo, Veiculos[i].AnoFabricacao, Veiculos[i].Preco, Veiculos[i].GetType().Name
-            );
+            Veiculo veiculo = Veiculos[i];
+            if (Veiculos[i] is Automovel a)
+            {
+                Console.WriteLine(
+                $"Tipo: {veiculo.GetType().Name}, " +
+                $"Marca: {veiculo.Marca}, Modelo: {veiculo.Modelo}, Ano: {veiculo.AnoFabricacao}, Cor: {veiculo.Cor}, " +
+                $"Capacidade: {veiculo.CapacidadeOcupantes}, Combustível: {veiculo.Combustivel}, Câmbio: {veiculo.Cambio}, " +
+                $"Tanque: {veiculo.CapacidadeTanque}L, Freio: {veiculo.TipoFreio}, Preço: R${veiculo.Preco}, Placa: {veiculo.Placa} " +
+                $"Portas: {a.NumeroPortas}, Ar-condicionado: {a.ArCondicionado}, Som: {a.SistemaSom}, " +
+                $"Airbags: {a.Airbags}, Estepe: {a.Estepe}, Carroceria: {a.Carroceria}\n");
+            }
+            else if (Veiculos[i] is Caminhonete c)
+            {
+                Console.WriteLine(
+                $"Tipo: {veiculo.GetType().Name}, " +
+                $"Marca: {veiculo.Marca}, Modelo: {veiculo.Modelo}, Ano: {veiculo.AnoFabricacao}, Cor: {veiculo.Cor}, " +
+                $"Capacidade de Ocupantes: {veiculo.CapacidadeOcupantes}, Combustível: {veiculo.Combustivel}, Câmbio: {veiculo.Cambio}, " +
+                $"Capacidade do Tanque: {veiculo.CapacidadeTanque}L, Tipo de Freio: {veiculo.TipoFreio}, Preço: R${veiculo.Preco}, " +
+                $"Placa: {veiculo.Placa}, Número de Portas: {c.NumeroPortas}, Ar-condicionado: {c.ArCondicionado}, " +
+                $"Sistema de Som: {c.SistemaSom}, Airbags: {c.Airbags}, Estepe: {c.Estepe}, " +
+                $"Capacidade de Carga: {c.CapacidadeCarga}kg, Tração: {c.Tracao}, Caçamba: {c.Cacamba}, " +
+                $"Potência do Motor: {c.PotenciaMotor}cv, Engate para Reboque: {c.EngateReboque}, " +
+                $"Suspensão Reforçada: {c.SuspensaoReforcada}\n");
+            }
+            else if (Veiculos[i] is Motocicleta m)
+            {
+                Console.WriteLine(
+                $"Tipo: {veiculo.GetType().Name}, " +
+                $"Marca: {veiculo.Marca}, Modelo: {veiculo.Modelo}, Ano: {veiculo.AnoFabricacao}, Cor: {veiculo.Cor}, " +
+                $"Capacidade de Ocupantes: {veiculo.CapacidadeOcupantes}, Combustível: {veiculo.Combustivel}, Câmbio: {veiculo.Cambio}, " +
+                $"Capacidade do Tanque: {veiculo.CapacidadeTanque}L, Tipo de Freio: {veiculo.TipoFreio}, Preço: R${veiculo.Preco}, " +
+                $"Cilindrada: {m.Cilindrada}cc, Tipo: {m.Tipo}, Partida: {m.Partida}, Placa: {m.Placa}\n");
+            }
         }
+        Console.ReadKey();
+    }
+    #endregion
+    #region Revenda
+    public static Revenda CadastrarRevenda()
+    {
+        Menu.Cabecalho();
+        Console.WriteLine("Cadastrar Revenda");
+        Console.WriteLine("------------------");
+        Console.Write("Nome da revenda: ");
+        string nome = Console.ReadLine()!;
+        Console.Write("CNPJ: ");
+        string cnpj = Console.ReadLine()!;
+        Console.Write("Endereco: ");
+        string endereco = Console.ReadLine()!;
+        Console.Write("Telefone: ");
+        string telefone = Console.ReadLine()!;
+        Console.Write("Email: ");
+        string email = Console.ReadLine()!;
+        return new Revenda(nome, cnpj, endereco, telefone, email);
+    }
+    public static void MostrarDadosRevenda(Revenda revenda)
+    {
+        Menu.Cabecalho();
+        Console.WriteLine("Dados da Revenda");
+        Console.WriteLine("------------------");
+        Console.WriteLine($"Nome: {revenda.Nome}");
+        Console.WriteLine($"CNPJ: {revenda.CNPJ}");
+        Console.WriteLine($"Endereco: {revenda.Endereco}");
+        Console.WriteLine($"Telefone: {revenda.Telefone}");
+        Console.WriteLine($"Email: {revenda.Email}");
         Console.ReadKey();
     }
     #endregion

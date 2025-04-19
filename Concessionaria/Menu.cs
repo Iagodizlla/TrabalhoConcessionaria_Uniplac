@@ -2,6 +2,8 @@
 //Eduardo Da Silva Ramos
 //Arthur Barbosa
 namespace Concessionaria;
+
+// Menu para o sistema de gerenciamento de veículos
 public class Menu
 {
     public static void Cabecalho()
@@ -54,6 +56,7 @@ public class Menu
         Console.WriteLine("2. Caminhonete");
         Console.WriteLine("3. Motocicleta");
         Console.WriteLine("4. Listar Veiculos");
+        Console.WriteLine("5. Dados Revenda");
         Console.WriteLine("S. Sair");
         Console.Write("Escolha uma opcao: ");
         char opcao = Console.ReadLine()!.ToUpper()[0];

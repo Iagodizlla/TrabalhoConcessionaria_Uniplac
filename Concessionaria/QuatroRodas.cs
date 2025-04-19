@@ -1,7 +1,6 @@
 ﻿//Iago Henrique Schlemper
 //Eduardo Da Silva Ramos
 //Arthur Barbosa
-
 namespace Concessionaria;
 
 // Herança intermediária
