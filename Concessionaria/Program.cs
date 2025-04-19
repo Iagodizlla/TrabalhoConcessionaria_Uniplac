@@ -1,4 +1,7 @@
-﻿namespace Concessionaria;
+﻿//Iago Henrique Schlemper
+//Eduardo Da Silva Ramos
+//Arthur Barbosa
+namespace Concessionaria;
 public class Program
 {
     public static List<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
@@ -60,7 +63,7 @@ public class Program
                     }
                 }
             }
-            else if (opcao == 'S')
+            else if(opcao == 'S')
             {
                 break;
             }
@@ -78,11 +81,16 @@ public class Program
         Console.WriteLine("Cadastrar Automovel");
         Console.WriteLine("---------------------");
 
-        Automovel automovel = ObterDadosAutomovel();
+        Automovel automovel = ObterDadosAutomovel(false, "");
         AdicionarVeiculo(automovel);
     }
-    public static Automovel ObterDadosAutomovel()
+    public static Automovel ObterDadosAutomovel(bool editar, string placa)
     {
+        if(editar == false)
+        {
+            Console.Write("Placa: ");
+            placa = Console.ReadLine()!;
+        }
         Console.Write("Marca: ");
         string marca = Console.ReadLine()!;
         Console.Write("Modelo: ");
@@ -115,8 +123,6 @@ public class Program
         bool estepe = bool.Parse(Console.ReadLine()!);
         Console.Write("Carroceria (Hatch/Sedan): ");
         string carroceria = Console.ReadLine()!;
-        string placa = anoFabricacao.ToString().Substring(0, 2) + marca.Substring(1, 1) + anoFabricacao.ToString().Substring(1, 1) + "-" +
-            cor.Substring(0, 2) + modelo.Substring(0, 2);
         Automovel automovel = new Automovel(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio, capacidadeTanque, 
             tipoFreio, preco, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, carroceria, placa);
         return automovel;
@@ -193,7 +199,7 @@ public class Program
         Console.WriteLine("Editar Automovel");
         Console.WriteLine("------------------");
 
-        ListarMotocicleta();
+        ListarAutomoveis();
         Console.WriteLine("Digite a placa da automovel: ");
         string placa = Console.ReadLine()!;
         Veiculo veiculoAntigo = BuscarVeiculo(placa);
@@ -204,7 +210,7 @@ public class Program
             Console.WriteLine("Editar Automovel");
             Console.WriteLine("---------------------");
 
-            Automovel automovel = ObterDadosAutomovel();
+            Automovel automovel = ObterDadosAutomovel(true, placa);
             AdicionarVeiculo(automovel);
         }
         else
@@ -221,11 +227,16 @@ public class Program
         Console.WriteLine("Cadastrar Caminhonete");
         Console.WriteLine("---------------------");
 
-        Caminhonete caminhonete = ObterDadosCaminhonete();
+        Caminhonete caminhonete = ObterDadosCaminhonete(false, "");
         AdicionarVeiculo(caminhonete);
     }
-    public static Caminhonete ObterDadosCaminhonete()
+    public static Caminhonete ObterDadosCaminhonete(bool editar, string placa)
     {
+        if (editar == false)
+        {
+            Console.Write("Placa: ");
+            placa = Console.ReadLine()!;
+        }
         Console.Write("Marca: ");
         string marca = Console.ReadLine()!;
         Console.Write("Modelo: ");
@@ -268,9 +279,6 @@ public class Program
         bool engateReboque = bool.Parse(Console.ReadLine()!);
         Console.Write("Suspensao Reforcada (true/false): ");
         bool suspensaoReforcada = bool.Parse(Console.ReadLine()!);
-
-        string placa = anoFabricacao.ToString().Substring(0, 2) + marca.Substring(1, 1) + anoFabricacao.ToString().Substring(1, 1) + "-" +
-            cor.Substring(0, 2) + modelo.Substring(0, 2);
 
         Caminhonete caminhonete = new Caminhonete(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio,
             capacidadeTanque, tipoFreio, preco, numeroPortas, arCondicionado, sistemaSom, airbags, estepe, capacidadeCarga, tracao, cacamba, 
@@ -351,7 +359,7 @@ public class Program
         Console.WriteLine("------------------");
 
         ListarCaminhonetes();
-        Console.WriteLine("Digite a placa da automovel: ");
+        Console.WriteLine("Digite a placa da caminhonete: ");
         string placa = Console.ReadLine()!;
         Veiculo veiculoAntigo = BuscarVeiculo(placa);
         if (veiculoAntigo is Caminhonete)
@@ -361,7 +369,7 @@ public class Program
             Console.WriteLine("Editar Caminhonete");
             Console.WriteLine("---------------------");
 
-            Caminhonete caminhonete = ObterDadosCaminhonete();
+            Caminhonete caminhonete = ObterDadosCaminhonete(true, placa);
             AdicionarVeiculo(caminhonete);
         }
         else
@@ -404,7 +412,7 @@ public class Program
         Console.WriteLine("------------------");
 
         ListarMotocicleta();
-        Console.WriteLine("Digite a placa da automovel: ");
+        Console.WriteLine("Digite a placa da motocicleta: ");
         string placa = Console.ReadLine()!;
         Veiculo veiculoAntigo = BuscarVeiculo(placa);
         if(veiculoAntigo is Motocicleta)
@@ -414,7 +422,7 @@ public class Program
             Console.WriteLine("Editar Motocicleta");
             Console.WriteLine("---------------------");
 
-            Motocicleta motocicleta = ObterDadosMotocicleta();
+            Motocicleta motocicleta = ObterDadosMotocicleta(true, placa);
             AdicionarVeiculo(motocicleta);
         }
         else
@@ -423,8 +431,13 @@ public class Program
             Console.ReadKey();
         }
     }
-    public static Motocicleta ObterDadosMotocicleta()
+    public static Motocicleta ObterDadosMotocicleta(bool editar, string placa)
     {
+        if (editar == false)
+        {
+            Console.Write("Placa: ");
+            placa = Console.ReadLine()!;
+        }
         Console.Write("Marca: ");
         string marca = Console.ReadLine()!;
         Console.Write("Modelo: ");
@@ -451,9 +464,6 @@ public class Program
         string tipo = Console.ReadLine()!;
         Console.Write("Partida (Eletrica ou Pedal): ");
         string partida = Console.ReadLine()!;
-
-        string placa = anoFabricacao.ToString().Substring(0, 2) + marca.Substring(1, 1) + anoFabricacao.ToString().Substring(1, 1) + "-" +
-            cor.Substring(0, 2) + modelo.Substring(0, 2);
 
         Motocicleta motocicleta = new Motocicleta(marca, modelo, anoFabricacao, cor, capacidadeOcupantes, combustivel, cambio,
             capacidadeTanque, tipoFreio, preco, cilindrada, tipo, partida, placa);
@@ -484,7 +494,7 @@ public class Program
         Console.WriteLine("Cadastrar Motocicleta");
         Console.WriteLine("---------------------");
 
-        Motocicleta motocicleta = ObterDadosMotocicleta();
+        Motocicleta motocicleta = ObterDadosMotocicleta(false, "");
         AdicionarVeiculo(motocicleta);
     }
     public static void RemoverMotocicleta()
@@ -529,7 +539,7 @@ public class Program
             }
         }
         Console.WriteLine("Placa nao encontrada!");
-        Console.ReadLine();
+        Console.ReadKey();
         return null!;
     }
     #endregion
