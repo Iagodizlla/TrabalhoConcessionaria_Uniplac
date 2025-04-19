@@ -8,7 +8,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Tela\" />
+    <Compile Remove="Tela\**" />
+    <EmbeddedResource Remove="Tela\**" />
+    <None Remove="Tela\**" />
   </ItemGroup>
 
 </Project>

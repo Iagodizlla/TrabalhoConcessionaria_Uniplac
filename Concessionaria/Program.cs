@@ -4,7 +4,6 @@
 namespace Concessionaria;
 public class Program
 {
-    public static List<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
     public static void Main(string[] args)
     {
         while (true)
@@ -89,7 +88,7 @@ public class Program
         if(editar == false)
         {
             Console.Write("Placa: ");
-            placa = Console.ReadLine()!;
+            placa = Console.ReadLine()!.ToUpper();
         }
         Console.Write("Marca: ");
         string marca = Console.ReadLine()!;
@@ -235,7 +234,7 @@ public class Program
         if (editar == false)
         {
             Console.Write("Placa: ");
-            placa = Console.ReadLine()!;
+            placa = Console.ReadLine()!.ToUpper();
         }
         Console.Write("Marca: ");
         string marca = Console.ReadLine()!;
@@ -436,7 +435,7 @@ public class Program
         if (editar == false)
         {
             Console.Write("Placa: ");
-            placa = Console.ReadLine()!;
+            placa = Console.ReadLine()!.ToUpper();
         }
         Console.Write("Marca: ");
         string marca = Console.ReadLine()!;
@@ -538,8 +537,6 @@ public class Program
                 return Veiculos[i];
             }
         }
-        Console.WriteLine("Placa nao encontrada!");
-        Console.ReadKey();
         return null!;
     }
     #endregion
