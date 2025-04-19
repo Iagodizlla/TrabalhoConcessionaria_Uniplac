@@ -2,18 +2,11 @@
 
 public class Revenda
 {
-    public string Nome { get; set; }
-    public string CNPJ { get; set; }
-    public string Endereco { get; set; }
-    public string Telefone { get; set; }
-    public string Email { get; set; }
+    public string Nome = "JR Multi-Marcas";
+    public string CNPJ = "14324343254";
+    public string Endereco = "4411.1412.111.11";
+    public string Telefone = "49 99990-3283";
+    public string Email = "jrmulti-marcas@gmail.com";
     public List<Veiculo> Veiculos { get; set; } = new List<Veiculo>();
-    public Revenda(string nome, string cnpj, string endereco, string telefone, string email)
-    {
-        Nome = nome;
-        CNPJ = cnpj;
-        Endereco = endereco;
-        Telefone = telefone;
-        Email = email;
-    }
+
 }

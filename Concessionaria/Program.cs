@@ -4,6 +4,7 @@
 namespace Concessionaria;
 public class Program
 {
+    public static List<Veiculo> Veiculos = new List<Veiculo>();
     public static void Main(string[] args)
     {
         while (true)
@@ -61,6 +62,10 @@ public class Program
                         default: Console.WriteLine("Opcao invalida! Pressione qualquer tecla para continuar..."); Console.ReadKey(); break;
                     }
                 }
+            }
+            else if(opcao == '4')
+            {
+                ListarVeiculos();
             }
             else if(opcao == 'S')
             {
@@ -538,6 +543,27 @@ public class Program
             }
         }
         return null!;
+    }
+    public static void ListarVeiculos()
+    {
+        Menu.Cabecalho();
+        Console.WriteLine("Listar Veiculos");
+        Console.WriteLine("------------------");
+        Console.WriteLine(
+            "{0, -10} | {1, -20} | {2, -20} | {3, -15} | {4, -10} | {5, -15}",
+            "Placa", "Marca", "Modelo", "Ano Fabricacao", "Preco", "Tipo"
+            );
+
+        for (int i = 0; i < Veiculos.Count; i++)
+        {
+            if (Veiculos[i] == null) continue;
+
+            Console.WriteLine(
+            "{0, -10} | {1, -20} | {2, -20} | {3, -15} | {4, -10} | {5, -15}",
+                Veiculos[i].Placa, Veiculos[i].Marca, Veiculos[i].Modelo, Veiculos[i].AnoFabricacao, Veiculos[i].Preco, Veiculos[i].GetType().Name
+            );
+        }
+        Console.ReadKey();
     }
     #endregion
 }

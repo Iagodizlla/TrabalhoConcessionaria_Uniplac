@@ -8,7 +8,7 @@ public class Menu
     {
         Console.Clear();
         Console.WriteLine("-----------------------------");
-        Console.WriteLine("        CONCESSIONARIA");
+        Console.WriteLine("  GERENCIAR CONCESSIONARIA");
         Console.WriteLine("-----------------------------\n");
     }
     public static char MenuMotocicleta()
@@ -53,6 +53,7 @@ public class Menu
         Console.WriteLine("1. Automovel");
         Console.WriteLine("2. Caminhonete");
         Console.WriteLine("3. Motocicleta");
+        Console.WriteLine("4. Listar Veiculos");
         Console.WriteLine("S. Sair");
         Console.Write("Escolha uma opcao: ");
         char opcao = Console.ReadLine()!.ToUpper()[0];
