@@ -6,6 +6,7 @@ namespace Concessionaria;
 // Herança intermediária
 public class QuatroRodas : Veiculo
 {
+    // Encapsulamento: uso de propriedades com get/set para acessar os atributos
     public int NumeroPortas { get; set; }
     public bool ArCondicionado { get; set; }
     public bool SistemaSom { get; set; }

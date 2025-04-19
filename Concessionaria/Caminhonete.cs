@@ -6,6 +6,7 @@ namespace Concessionaria;
 // Herança: a classe Caminhonete herda de QuatroRodas
 public class Caminhonete : QuatroRodas
 {
+    // Encapsulamento: uso de propriedades com get/set para acessar os atributos
     public int CapacidadeCarga { get; set; } //em kg
     public string Tracao { get; set; } //4x2, 4x4
     public string Cacamba { get; set; } //aberta/fechada
@@ -26,5 +27,20 @@ public class Caminhonete : QuatroRodas
         PotenciaMotor = potenciaMotor;
         EngateReboque = engateReboque;
         SuspensaoReforcada = suspensaoReforcada;
+    }
+    // Polimorfismo: sobrescrita do método MostrarVeiculos
+    public override void MostrarVeiculos()
+    {
+        Console.WriteLine(
+                $"Tipo: {this.GetType().Name}, " +
+                $"Marca: {Marca}, Modelo: {Modelo}, Ano: {AnoFabricacao}, Cor: {Cor}, " +
+                $"Capacidade de Ocupantes: {CapacidadeOcupantes}, Combustível: {Combustivel}, Câmbio: {Cambio}, " +
+                $"Capacidade do Tanque: {CapacidadeTanque}L, Tipo de Freio: {TipoFreio}, Preço: R${Preco}, " +
+                $"Placa: {Placa}, Número de Portas: {NumeroPortas}, Ar-condicionado: {ArCondicionado}, " +
+                $"Sistema de Som: {SistemaSom}, Airbags: {Airbags}, Estepe: {Estepe}, " +
+                $"Capacidade de Carga: {CapacidadeCarga}kg, Tração: {Tracao}, Caçamba: {Cacamba}, " +
+                $"Potência do Motor: {PotenciaMotor}cv, Engate para Reboque: {EngateReboque}, " +
+                $"Suspensão Reforçada: {SuspensaoReforcada}\n"
+        );
     }
 }

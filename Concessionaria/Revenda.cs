@@ -7,6 +7,8 @@ namespace Concessionaria;
 // Abstração: Classe Revenda para representar uma revenda de veículos
 public class Revenda
 {
+    // Abstração: esta classe representa o conceito de uma revenda de veículos
+    // Encapsulamento: uso de propriedades com get/set para acessar os atributos
     public string Nome { get; set; }
     public string CNPJ { get; set; }
     public string Endereco { get; set; }

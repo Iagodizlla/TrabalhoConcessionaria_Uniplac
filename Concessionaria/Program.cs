@@ -7,6 +7,7 @@ namespace Concessionaria;
 public class Program
 {
     public static List<Veiculo> Veiculos = new List<Veiculo>();
+    
     public static void Main(string[] args)
     {
         Revenda revenda = CadastrarRevenda();
@@ -562,37 +563,22 @@ public class Program
             if (Veiculos[i] == null) continue;
 
             Veiculo veiculo = Veiculos[i];
-            if (Veiculos[i] is Automovel a)
+            Veiculo automovel = new Automovel(null!, null!, 0, null!, 0, null!, null!, 0.0, null!, 0.0, null!, 0, false, false, false, false, null!);
+            Veiculo caminhonete = new Caminhonete(null!, null!, 0, null!, 0, null!, null!, 0.0, null!, 0.0, 0, false, false, false, false, 0, 
+                null!, null!, 0, false, false, null!);
+            Veiculo motocicleta = new Motocicleta(null!, null!, 0, null!, 0, null!, null!, 0.0, null!, 0.0, 0, null!, null!, null!);
+
+            if (Veiculos[i] is Automovel)
             {
-                Console.WriteLine(
-                $"Tipo: {veiculo.GetType().Name}, " +
-                $"Marca: {veiculo.Marca}, Modelo: {veiculo.Modelo}, Ano: {veiculo.AnoFabricacao}, Cor: {veiculo.Cor}, " +
-                $"Capacidade: {veiculo.CapacidadeOcupantes}, Combustível: {veiculo.Combustivel}, Câmbio: {veiculo.Cambio}, " +
-                $"Tanque: {veiculo.CapacidadeTanque}L, Freio: {veiculo.TipoFreio}, Preço: R${veiculo.Preco}, Placa: {veiculo.Placa} " +
-                $"Portas: {a.NumeroPortas}, Ar-condicionado: {a.ArCondicionado}, Som: {a.SistemaSom}, " +
-                $"Airbags: {a.Airbags}, Estepe: {a.Estepe}, Carroceria: {a.Carroceria}\n");
+                automovel.MostrarVeiculos();
             }
-            else if (Veiculos[i] is Caminhonete c)
+            else if (Veiculos[i] is Caminhonete)
             {
-                Console.WriteLine(
-                $"Tipo: {veiculo.GetType().Name}, " +
-                $"Marca: {veiculo.Marca}, Modelo: {veiculo.Modelo}, Ano: {veiculo.AnoFabricacao}, Cor: {veiculo.Cor}, " +
-                $"Capacidade de Ocupantes: {veiculo.CapacidadeOcupantes}, Combustível: {veiculo.Combustivel}, Câmbio: {veiculo.Cambio}, " +
-                $"Capacidade do Tanque: {veiculo.CapacidadeTanque}L, Tipo de Freio: {veiculo.TipoFreio}, Preço: R${veiculo.Preco}, " +
-                $"Placa: {veiculo.Placa}, Número de Portas: {c.NumeroPortas}, Ar-condicionado: {c.ArCondicionado}, " +
-                $"Sistema de Som: {c.SistemaSom}, Airbags: {c.Airbags}, Estepe: {c.Estepe}, " +
-                $"Capacidade de Carga: {c.CapacidadeCarga}kg, Tração: {c.Tracao}, Caçamba: {c.Cacamba}, " +
-                $"Potência do Motor: {c.PotenciaMotor}cv, Engate para Reboque: {c.EngateReboque}, " +
-                $"Suspensão Reforçada: {c.SuspensaoReforcada}\n");
+                caminhonete.MostrarVeiculos();
             }
-            else if (Veiculos[i] is Motocicleta m)
+            else if (Veiculos[i] is Motocicleta)
             {
-                Console.WriteLine(
-                $"Tipo: {veiculo.GetType().Name}, " +
-                $"Marca: {veiculo.Marca}, Modelo: {veiculo.Modelo}, Ano: {veiculo.AnoFabricacao}, Cor: {veiculo.Cor}, " +
-                $"Capacidade de Ocupantes: {veiculo.CapacidadeOcupantes}, Combustível: {veiculo.Combustivel}, Câmbio: {veiculo.Cambio}, " +
-                $"Capacidade do Tanque: {veiculo.CapacidadeTanque}L, Tipo de Freio: {veiculo.TipoFreio}, Preço: R${veiculo.Preco}, " +
-                $"Cilindrada: {m.Cilindrada}cc, Tipo: {m.Tipo}, Partida: {m.Partida}, Placa: {m.Placa}\n");
+                motocicleta.MostrarVeiculos();
             }
         }
         Console.ReadKey();

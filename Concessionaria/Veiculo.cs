@@ -4,8 +4,9 @@
 namespace Concessionaria;
 
 // Abstração: Classe genérica para representar qualquer veículo
-public class Veiculo
+public abstract class Veiculo
 {
+    // Encapsulamento: uso de propriedades com get/set para acessar os atributos
     public string Marca { get; set; }
     public string Modelo { get; set; }
     public int AnoFabricacao { get; set; }
@@ -34,4 +35,6 @@ public class Veiculo
         Preco = preco;
         Placa = placa;
     }
+    // Polimorfismo: método abstrato para mostrar os veículos
+    public abstract void MostrarVeiculos();
 }
