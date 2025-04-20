@@ -3,23 +3,21 @@
 //Arthur Barbosa
 namespace Concessionaria;
 
-// Herança: a classe Caminhonete herda de DeCarga
-public class Caminhonete : DeCarga
+// Herança: a classe Caminhao herda de DeCarga
+public class Caminhao : DeCarga
 {
     // Encapsulamento: uso de propriedades com get/set para acessar os atributos
-    public string TipoCarroceria { get; set; }
-    public bool EngateReboque { get; set; }
+    public int NumeroEixos { get; set; }
     // construtor padrão herdado da classe intermediária
-    public Caminhonete(double preco, string marca, string modelo, int anoFabricacao, string cor,
+    public Caminhao(double preco, string marca, string modelo, int anoFabricacao, string cor,
         int capacidadeOcupantes, string tipoFreio, string cambio, string placa, int capacidadeCarga,
         int potenciaMotor, string tracao, int numeroPortas, double capacidadeTanque,
-        bool arCondicionado, bool airbags, bool estepe, string tipoCarroceria, bool engateReboque)
+        bool arCondicionado, bool airbags, bool estepe, int numeroEixos)
         : base(preco, marca, modelo, anoFabricacao, cor, capacidadeOcupantes, tipoFreio, cambio, placa,
                capacidadeCarga, potenciaMotor, tracao, numeroPortas, capacidadeTanque,
                arCondicionado, airbags, estepe)
     {
-        TipoCarroceria = tipoCarroceria;
-        EngateReboque = engateReboque;
+        NumeroEixos = numeroEixos;
     }
     // Polimorfismo: sobrescrita do método MostrarVeiculos
     public override void MostrarVeiculos()
@@ -31,7 +29,7 @@ public class Caminhonete : DeCarga
             $"Preço: R${Preco}, Placa: {Placa}, Carga útil: {CapacidadeCarga}kg, " +
             $"Potência do motor: {PotenciaMotor}cv, Tração: {Tracao}, Portas: {NumeroPortas}, " +
             $"Tanque: {CapacidadeTanque}L, Ar-condicionado: {ArCondicionado}, Airbags: {Airbags}, " +
-            $"Estepe: {Estepe}, Tipo de carroceria: {TipoCarroceria}, Engate para reboque: {EngateReboque}\n"
+            $"Estepe: {Estepe}, Número de eixos: {NumeroEixos}\n"
         );
     }
 }
