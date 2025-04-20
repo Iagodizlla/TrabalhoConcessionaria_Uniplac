@@ -52,7 +52,7 @@ dotnet build --configuration Release
 dotnet run --project Calculadora.ConsoleApp
 ```
 
-6. Para executar o arquivo compilado, navegue até a pasta `./Calculadora.ConsoleApp/bin/Release/net8.0/` e execute o arquivo:
+6. Para executar o arquivo compilado, navegue até a pasta `./.../bin/Release/net8.0/` e execute o arquivo:
    
 ```
 Calculdora.ConsoleApp.exe
